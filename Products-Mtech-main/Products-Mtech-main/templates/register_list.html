@@ -1,0 +1,269 @@
+{% extends 'base.html' %} {% block title %}Register List{% endblock %} {%block content %}
+
+<div class="bs-example">
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a
+        class="nav-link active"
+        id="home-tab"
+        data-toggle="tab"
+        href="#home"
+        role="tab"
+        aria-controls="home"
+        aria-selected="true"
+        >National List</a
+      >
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        id="profile-tab"
+        data-toggle="tab"
+        href="#profile"
+        role="tab"
+        aria-controls="profile"
+        aria-selected="false"
+        >Inter National List</a
+      >
+    </li>
+  </ul>
+
+  <div class="tab-content">
+    <div
+      class="tab-pane fade show active"
+      id="home"
+      role="tabpanel"
+      aria-labelledby="home-tab"
+    >
+      <div class="card container mt-2">
+        <div class="card-body" style="padding: 0rem">
+          <div id="accordion1">
+            <div class="card mb-2">
+              <!-- content -->
+              <h4> Approved List</h4>
+
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Product Name</th>
+                    <th>Version</th>
+                    <th>Creation Date</th>
+                    <th>Govt Approval</th>
+                    <th>Expiry Date</th>
+                    <th>State</th>
+                    <th>Remark</th>
+                  </tr>
+                </thead>
+                <tbody id="national-approved">
+                </tbody>
+              </table>
+              <hr>
+
+              <h4> Pending List</h4>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Product Name</th>
+                    <th>Version</th>
+                    <th>Creation Date</th>
+                    <th>Govt Approval</th>
+                    <th>Expiry Date</th>
+                    <th>State</th>
+                    <th>Remark</th>
+                  </tr>
+                </thead>
+                <tbody id="national-pending">
+                </tbody>
+              </table>
+              <hr>
+
+              <h4> Rejection List</h4>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Product Name</th>
+                    <th>Version</th>
+                    <th>Creation Date</th>
+                    <th>Govt Approval</th>
+                    <th>Expiry Date</th>
+                    <th>State</th>
+                    <th>Remark</th>
+                  </tr>
+                </thead>
+                <tbody id="national-rejection">
+                </tbody>
+              </table>
+              <hr>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2nd -->
+
+    <div
+      class="tab-pane fade show"
+      id="profile"
+      role="tabpanel"
+      aria-labelledby="profile-tab"
+    >
+      <div class="card container mt-2">
+        <div class="card-body" style="padding: 0rem">
+          <div id="accordion1">
+            <div class="card mb-2">
+              <!-- content -->
+
+              <h4> Approved List</h4>
+              <hr>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Product Name</th>
+                    <th>Version</th>
+                    <th>Creation Date</th>
+                    <th>Govt Approval</th>
+                    <th>Country</th>
+                    <th>MOU</th>
+                  </tr>
+                </thead>
+                <tbody id="int-national-approved">
+                </tbody>
+              </table>
+
+              <h4> Pending List</h4>
+              <hr>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Product Name</th>
+                    <th>Version</th>
+                    <th>Creation Date</th>
+                    <th>Govt Approval</th>
+                    <th>Country</th>
+                    <th>MOU</th>
+                  </tr>
+                </thead>
+                <tbody id="int-national-pending">
+                </tbody>
+              </table>
+
+              <h4> Rejection List</h4>
+              <hr>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Product Name</th>
+                    <th>Version</th>
+                    <th>Creation Date</th>
+                    <th>Govt Approval</th>
+                    <th>Country</th>
+                    <th>MOU</th>
+                  </tr>
+                </thead>
+                <tbody id="int-national-rejection">
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %} {%block css%}
+
+<style>
+  .bs-example {
+    margin: 20px;
+  }
+</style>
+
+{% endblock %} {% block script%}
+
+<script>
+  $(document).ready(function () {
+    $.ajax({
+        url: "{% url 'fetch_register_list'%}",
+        type: "GET",
+
+        success: function (res) {
+          for(i=0; i< res.national_response.length; i++){
+            if (res.national_response[i]['govt_approval'] == "Approved"){
+                $("#national-approved").append(`<tr>
+                    <td>${res.national_response[i]['product_name']}</td>
+                    <td>${res.national_response[i]['version']}</td>
+                    <td>${res.national_response[i]['creation_date']}</td>
+                    <td>${res.national_response[i]['govt_approval']}</td>
+                    <td>${res.national_response[i]['expiry_date']}</td>
+                    <td>${res.national_response[i]['state']}</td>
+                    <td>${res.national_response[i]['remark']}</td>
+      </tr>`)
+            }else if(res.national_response[i]['govt_approval'] == "Pending Approval"){
+                $("#national-pending").append(`<tr><td>${res.national_response[i]['product_name']}</td>
+                    <td>${res.national_response[i]['version']}</td>
+                    <td>${res.national_response[i]['creation_date']}</td>
+                    <td>${res.national_response[i]['govt_approval']}</td>
+                    <td>${res.national_response[i]['expiry_date']}</td>
+                    <td>${res.national_response[i]['state']}</td>
+                    <td>${res.national_response[i]['remark']}</td></tr>`)
+          }else if(res.national_response[i]['govt_approval'] == "Reject"){
+            $("#national-rejection").append(`<tr><td>${res.national_response[i]['product_name']}</td>
+                    <td>${res.national_response[i]['version']}</td>
+                    <td>${res.national_response[i]['creation_date']}</td>
+                    <td>${res.national_response[i]['govt_approval']}</td>
+                    <td>${res.national_response[i]['expiry_date']}</td>
+                    <td>${res.national_response[i]['state']}</td>
+                    <td>${res.national_response[i]['remark']}</td></tr>`)
+          }
+        }
+    },
+        error: function (err) {
+          alert("Error");
+        },
+    });
+
+
+    $("#profile-tab").click(function(e){
+        $.ajax({
+        url: "{% url 'fetch_int_register_list'%}",
+        type: "GET",
+
+        success: function (res) {
+          for(i=0; i< res.inter_national_response.length; i++){
+            if (res.inter_national_response[i]['govt_approval'] == "Approved"){
+                $("#int-national-approved").append(`<tr>
+                    <td>${res.inter_national_response[i]['product_name']}</td>
+                    <td>${res.inter_national_response[i]['version']}</td>
+                    <td>${res.inter_national_response[i]['creation_date']}</td>
+                    <td>${res.inter_national_response[i]['govt_approval']}</td>
+                    <td>${res.inter_national_response[i]['country']}</td>
+                    <td>${res.inter_national_response[i]['mou']}</td>
+      </tr>`)
+            }else if(res.inter_national_response[i]['govt_approval'] == "Pending Approval"){
+                $("#int-national-pending").append(`<tr><td>${res.inter_national_response[i]['product_name']}</td>
+                    <td>${res.inter_national_response[i]['version']}</td>
+                    <td>${res.inter_national_response[i]['creation_date']}</td>
+                    <td>${res.inter_national_response[i]['govt_approval']}</td>
+                    <td>${res.inter_national_response[i]['country']}</td>
+                    <td>${res.inter_national_response[i]['mou']}</td></tr>`)
+          }else if(res.inter_national_response[i]['govt_approval'] == "Reject"){
+            $("#int-national-rejection").append(`<tr><td>${res.inter_national_response[i]['product_name']}</td>
+                    <td>${res.inter_national_response[i]['version']}</td>
+                    <td>${res.inter_national_response[i]['creation_date']}</td>
+                    <td>${res.inter_national_response[i]['govt_approval']}</td>
+                    <td>${res.inter_national_response[i]['country']}</td>
+                    <td>${res.inter_national_response[i]['mou']}</td></tr>`)
+          }
+        }
+    },
+        error: function (err) {
+          alert("Error");
+        },
+    });
+    });
+  });
+</script>
+{% endblock %}

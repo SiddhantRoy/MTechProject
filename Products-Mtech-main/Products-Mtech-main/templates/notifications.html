@@ -1,0 +1,67 @@
+{% extends 'base.html' %} 
+
+{% block title %}Notification{% endblock %}
+
+{% block content %}
+
+<table class="table container">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Username</th>
+        <th scope="col">Email</th>
+        <th scope="col">Mobile No.</th>
+        <th scope="col">Document</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        {%if data%}
+        {% for i in data %}
+      <tr>
+        <th scope="row">1</th>
+        <td>{{i.username}}</td>
+        <td>{{i.email}}</td>
+        <td>{{i.mobile_no}}</td>
+        <td><img src="{{i.imageurl}}" class="img-thumbnail" alt="Responsive image" style="width:500px; height:100px"></td>
+        <td><button type="button" value="{{i.id}}" id="accept-btn" class="btn btn-success">Accepted</button> / 
+        <button type="button" value="{{i.id}}" id="reject-btn" class="btn btn-danger">Rejected</button></td>
+      </tr>
+      {% endfor %}
+      {% else %}
+      <h2>No data to show</h2>
+      {% endif %}
+
+    </tbody>
+  </table>
+
+{% endblock %} 
+{% block script%}
+<script>
+    $(document).ready(function(){
+        $("#accept-btn").click(function(e){
+            e.preventDefault()
+            user_id = this.value
+
+            $.ajax({
+            url: "{% url 'get_approve_user' %}",
+            type: "GET",
+            data: {
+                user_id: user_id
+            },
+
+            success: function (response) {    
+
+                alert(response.Success)
+
+            },
+            err: function (err) {
+
+            alert(err)
+
+            }    
+        })
+    })
+    })
+</script>
+{% endblock %}

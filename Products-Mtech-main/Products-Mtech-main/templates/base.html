@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Base{% endblock %}</title>
+    
+
+    {% load static %}
+
+    <!-- Tab icon -->
+    <link rel="icon" href="{% static 'linercost/images/svt_2.png' %}">
+
+    <!-- Here both Jquery, jquery css and jquery-ui.js file -->
+    <link rel="stylesheet" href="{% static 'linercost/css/jquery-ui.css' %}">
+    <script src="/static/linercost/js/jquery.js"></script>
+    <script src="/static/linercost/js/jquery-ui.min.js"></script>
+
+    <!--  -->
+    <!-- <link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></style>
+<script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script> -->
+
+<!-- <script src = "https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.1/jquery.twbsPagination.min.js"> </script> -->
+
+    <!-- Till here -->
+
+    <!-- for chartjs -->
+    <script src="/static/linercost/js/chart.js"></script>
+
+    <!-- for XLSX -->
+    <script src="/static/linercost/js/xlsx.full.min.js"></script>
+
+    <!-- For Bootstrap -->
+    <script src="/static/linercost/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static 'linercost/css/bootstrap.min.css' %}">
+
+    <!-- Lobi box -->
+    <script type="text/javascript" src="/static/linercost/js/lobibox.min.js"></script>
+    <link rel="stylesheet" href="{% static 'linercost/css/lobibox.min.css' %}">
+
+    <!-- For Select2 -->
+
+    <script type="text/javascript" src="/static/linercost/js/select2.min.js"></script>
+    <link rel="stylesheet" href="{% static 'linercost/css/select2.min.css' %}">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{% static 'linercost/css/fontawesome/all.css' %}">
+
+    <!-- for multi seelct -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.css">
+<script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
+
+    {%block css%}
+    <style>
+    .navbar-nav>.active>a {
+            background-color: #C0C0C0;
+            color: green;
+        }
+    </style>
+    {% endblock %}
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #017e7e; font: 400 14px/20px Roboto,Helvetica Neue,sans-serif;">
+      <a class="navbar-brand" href="{%url 'dashboard'%}">DRUG REGISTER</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      {%if user.is_authenticated %}
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          {%if user.is_school_coordinator %}
+          <li class="nav-item" id="a">
+            <a class="nav-link" href="{%url 'products'%}">Products<span class="sr-only">(current)</span></a>
+          </li>
+
+          <li class="nav-item" id="b">
+            <a class="nav-link" href="{%url 'registration_wizard'%}">Registration<span class="sr-only">(current)</span></a>
+          </li>
+
+          <li class="nav-item" id="c">
+            <a class="nav-link" href="{% url 'register_maintenance'%}">Register Maintenance<span class="sr-only">(current)</span></a>
+          </li>
+
+          <li class="nav-item" id="d">
+            <a class="nav-link" href="{%url 'documentation'%}">Documentaion<span class="sr-only">(current)</span></a>
+          </li>
+
+          <li class="nav-item" id="e">
+            <a class="nav-link" href="{%url 'national_verification'%}">National Verification<span class="sr-only">(current)</span></a>
+          </li>
+
+          <li class="nav-item" id="f">
+            <a class="nav-link" href="{%url 'inter_national_verification'%}">InterNational Verification<span class="sr-only">(current)</span></a>
+          </li>
+
+          <li class="nav-item" id="g">
+            <a class="nav-link" href="{%url 'register_list'%}">Register List<span class="sr-only">(current)</span></a>
+          </li>
+
+          <li class="nav-item" id="h">
+            <a class="nav-link" href="{%url 'qr_code_generator_page'%}">QR Code<span class="sr-only">(current)</span></a>
+          </li>
+
+          {% endif %}
+
+        </ul> 
+        
+        {% if user.is_superuser %}
+
+        <a class="btn" id="notification" href="{%url 'approval_list'%}" class="nav-link" style="color:white; border: white;"
+            ><i class="fa fa-bell" style="font-size:22px;color:rgba(233, 55, 10, 0.999);"></i></a
+          >
+          
+        {%endif%}
+        
+        <a class="btn btn-outline-warning" class="nav-link" href="{% url 'logout' %}" style="color:white; border: white;"
+            >Logout <span class="sr-only">(current)</span></a
+          >
+        {% endif %}
+        
+      </div>
+    </nav>
+
+    {% block content %} {% endblock %}
+
+    <!-- For Script -->
+    {% block script%}
+    <script>
+      
+      var header = document.getElementById("navbarSupportedContent");
+      var btns = header.getElementsByClassName("nav-item");
+      for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function() {
+        var current = document.getElementsByClassName("active");
+        if (current.length > 0) { 
+          current[0].className = current[0].className.replace(" active", "");
+        }
+        this.className += " active";
+        });
+      }
+
+    </script>
+    {% endblock %}
+  </body>
+</html>

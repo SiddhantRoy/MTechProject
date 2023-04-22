@@ -1,0 +1,1682 @@
+{% extends 'base.html' %} {% block title %}Registraion Wizrad{% endblock %}
+{%block content %}
+
+<div class="bs-example">
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a
+        class="nav-link active"
+        id="home-tab"
+        data-toggle="tab"
+        href="#home"
+        role="tab"
+        aria-controls="home"
+        aria-selected="true"
+        >Product</a
+      >
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        id="profile-tab"
+        data-toggle="tab"
+        href="#profile"
+        role="tab"
+        aria-controls="profile"
+        aria-selected="false"
+        >Procedure</a
+      >
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        id="contact-tab"
+        data-toggle="tab"
+        href="#contact"
+        role="tab"
+        aria-controls="contact"
+        aria-selected="false"
+        >Country</a
+      >
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        id="producy-contact-tab"
+        data-toggle="tab"
+        href="#product-contact"
+        role="tab"
+        aria-controls="contact"
+        aria-selected="false"
+        >Product contents</a
+      >
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        id="manfac-details"
+        data-toggle="tab"
+        href="#man-fac-details"
+        role="tab"
+        aria-controls="contact"
+        aria-selected="false"
+        >Manufactureing Details</a
+      >
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        id="documents"
+        data-toggle="tab"
+        href="#docs"
+        role="tab"
+        aria-controls="contact"
+        aria-selected="false"
+        >Documents</a
+      >
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        id="reg-basic-info"
+        data-toggle="tab"
+        href="#regs"
+        role="tab"
+        aria-controls="contact"
+        aria-selected="false"
+        >Registraion Basic Info</a
+      >
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div
+      class="tab-pane fade show active"
+      id="home"
+      role="tabpanel"
+      aria-labelledby="home-tab"
+    >
+      <!-- change Here for A -->
+
+      <div class="tab-content" id="myTabContent">
+        <div class="card container mt-2">
+          <div id="accordion1">
+            <div class="card mb-2">
+              <div class="card-header" id="headingOne" style="height: 50px">
+                <h5
+                  class="mb-0"
+                  data-toggle="collapse"
+                  data-target="#collapseOne"
+                  aria-expanded="true"
+                  aria-controls="collapseOne"
+                  style="cursor: pointer"
+                >
+                  <button
+                    class="btn btn-link"
+                    data-toggle="collapse"
+                    data-target="#collapseOne"
+                    aria-expanded="true"
+                    aria-controls="collapseOne"
+                    style="cursor: pointer"
+                  >
+                    Select Products
+                    <span><i class="fas fa-angle-down"></i></span>
+                  </button>
+                </h5>
+              </div>
+
+              <div class="card-body" style="padding: 0rem">
+                <div class="row d-flex justify-content-center mt-100 m-3">
+                  <div class="col-md-6">
+                    <select
+                      id="choices-multiple-remove-button"
+                      placeholder="Select Products"
+                      multiple
+                      class="prod"
+                    >
+                      {% for i in obj %}
+                      <option value="{{i.preffered_product_name}}">
+                        {{i.preffered_product_name}}
+                      </option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1st change end here -->
+    </div>
+    <div
+      class="tab-pane fade"
+      id="profile"
+      role="tabpanel"
+      aria-labelledby="profile-tab"
+    >
+      <!-- Change here for B -->
+
+      <div class="tab-content" id="myTabContent2">
+        <div class="card container mt-2">
+          <div id="accordion2">
+            <div class="card mb-2">
+              <div class="card-header" id="headingTwo" style="height: 50px">
+                <h5
+                  class="mb-0"
+                  data-toggle="collapse"
+                  data-target="#collapseTwo"
+                  aria-expanded="true"
+                  aria-controls="collapseTwo"
+                  style="cursor: pointer"
+                >
+                  <button
+                    class="btn btn-link"
+                    data-toggle="collapse"
+                    data-target="#collapseTwo"
+                    aria-expanded="true"
+                    aria-controls="collapseTwo"
+                    style="cursor: pointer"
+                  >
+                    Selected Procedure Types
+                    <span><i class="fas fa-angle-down"></i></span>
+                  </button>
+                </h5>
+              </div>
+              <!--  -->
+              <div class="m-2 procedure-checks-cls">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="National"
+                    id="national"
+                  />
+                  <label class="form-check-label" for="national">
+                    National
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="Centralized"
+                    id="centralized"
+                  />
+                  <label class="form-check-label" for="centralized">
+                    Centralized
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="Mutual Recocgnition"
+                    id="mtl-recongtion"
+                  />
+                  <label class="form-check-label" for="mtl-recongtion">
+                    Mutual Recocgnition
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="decentrallized"
+                    id="denetral"
+                  />
+                  <label class="form-check-label" for="decentral">
+                    decentrallized(for European)
+                  </label>
+                </div>
+              </div>
+              <!--  -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- B end here -->
+    </div>
+    <div
+      class="tab-pane fade"
+      id="contact"
+      role="tabpanel"
+      aria-labelledby="contact-tab"
+    >
+      <div class="tab-content" id="myTabContent3">
+        <div class="card container mt-2">
+          <div id="accordion3">
+            <div class="card mb-2">
+              <div class="card-header" id="headingThree" style="height: 50px">
+                <h5
+                  class="mb-0"
+                  data-toggle="collapse"
+                  data-target="#collapseThree"
+                  aria-expanded="true"
+                  aria-controls="collapseThree"
+                  style="cursor: pointer"
+                >
+                  <button
+                    class="btn btn-link"
+                    data-toggle="collapse"
+                    data-target="#collapseThree"
+                    aria-expanded="true"
+                    aria-controls="collapseThree"
+                    style="cursor: pointer"
+                  >
+                    National Procedure: Selected Countries/ Companies
+                    <span><i class="fas fa-angle-down"></i></span>
+                  </button>
+                </h5>
+              </div>
+              <!--  -->
+              <!-- countries -->
+
+              <div class="card-body" style="padding: 0rem">
+                <div class="row d-flex justify-content-center mt-100 m-3">
+                  <div class="col-md-6">
+                    <select
+                      id="select-countries"
+                      placeholder="Select Countries"
+                      multiple
+                    >
+                      <option value="Austria">Austria</option>
+                      <option value="Belgium">Belgium</option>
+                      <option value="Czech Republic">Czech Republic</option>
+                      <option value="Denmark">Denmark</option>
+                      <option value="Egypt">Egypt</option>
+                      <option value="French">French</option>
+                      <option value="Germany">Germany</option>
+                      <option value="Hungary">Hungary</option>
+                      <option value="India">India</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- end countries -->
+
+              <!-- companies -->
+
+              <div class="card-body" style="padding: 0rem">
+                <div class="row d-flex justify-content-center mt-100 m-3">
+                  <div class="col-md-6">
+                    <select
+                      id="select-companies"
+                      placeholder="Select Companes"
+                      multiple
+                    >
+                      <option value="AK Abello">AK Abello</option>
+                      <option value="Lundbeck">Lundbeck</option>
+                      <option value="Novo Nordisk">Novo Nordisk</option>
+                      <option value="Nycomed">Nycomed</option>
+                      <option value="Cipla Ltd">Cipla Ltd</option>
+                      <option value="Torrent Pharmaceuticals Ltd">
+                        Torrent Pharmaceuticals Ltd
+                      </option>
+                      <option value="Max Healthcare Institute Ltd">
+                        Max Healthcare Institute Ltd
+                      </option>
+                      <option value="Johnson & Johnson">
+                        Johnson & Johnson
+                      </option>
+                      <option value="Novartis">Novartis</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- end companies -->
+
+              <!--  -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="tab-pane fade"
+      id="product-contact"
+      role="tabpanel"
+      aria-labelledby="product-contact-tab"
+    >
+    <!-- D starts here -->
+  <div class="tab-content" id="myTabContent4">
+    <div class="card container mt-2">
+      <div id="accordion4">
+        <div class="card mb-2">
+
+          <div class="card-header" id="headingFour" style="height: 50px">
+            <h5
+              class="mb-0"
+              data-toggle="collapse"
+              data-target="#collapseFour"
+              aria-expanded="true"
+              aria-controls="collapseFour"
+              style="cursor: pointer"
+            >
+              <button
+                class="btn btn-link"
+                data-toggle="collapse"
+                data-target="#collapseFour"
+                aria-expanded="true"
+                aria-controls="collapseFour"
+                style="cursor: pointer"
+              >
+                Select Product Contents
+                <span><i class="fas fa-angle-down"></i></span>
+              </button>
+            </h5>
+          </div>
+
+          <!-- content -->
+
+          <div class="container">
+            <div class="row" id="product-content-id">
+              <!-- <div class="col">
+                <p>Product : <span id="ppn"></span></p>
+              </div> -->
+            </div>
+          </div>
+
+          
+
+          <!-- content end -->
+
+      </div>
+    </div>
+  </div>
+
+
+    </div>
+
+    <!-- D end here -->
+    </div>
+    <div
+      class="tab-pane fade"
+      id="man-fac-details"
+      role="tabpanel"
+      aria-labelledby="manfac-details"
+    >
+      <!-- changes here for E -->
+
+      <div class="tab-content" id="myTabContent5">
+        <div class="card container mt-2">
+          <div id="accordion3">
+            <div class="card mb-2">
+              <div class="card-header" id="headingFive" style="height: 50px">
+                <h5
+                  class="mb-0"
+                  data-toggle="collapse"
+                  data-target="#collapseFive"
+                  aria-expanded="true"
+                  aria-controls="collapseFive"
+                  style="cursor: pointer"
+                >
+                  <button
+                    class="btn btn-link"
+                    data-toggle="collapse"
+                    data-target="#collapseFive"
+                    aria-expanded="true"
+                    aria-controls="collapseFive"
+                    style="cursor: pointer"
+                  >
+                    Select a Product to Review Manufacturing Details
+                    <span><i class="fas fa-angle-down"></i></span>
+                  </button>
+                </h5>
+              </div>
+
+              <!--  -->
+              <div class="card-body" style="padding: 0rem">
+                <div class="row d-flex justify-content-center mt-100 m-3">
+                  <div class="col-md-6">
+                    <select
+                    class="man-prod"
+                      id="man-prod-details"
+                      placeholder="Select Products"
+                      
+                    >
+                    {% for i in obj %}
+                    <option value="{{i.preffered_product_name}}">
+                      {{i.preffered_product_name}}
+                    </option>
+                    {% endfor %}
+
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <!--  -->
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- for manufac details -->
+
+      <div class="tab-content" id="myTabContent51">
+        <div class="card container mt-2">
+          <div id="accordion3">
+            <div class="card mb-2">
+              <div class="card-header" id="headingFive1" style="height: 50px">
+                <h5
+                  class="mb-0"
+                  data-toggle="collapse"
+                  data-target="#collapseFive1"
+                  aria-expanded="true"
+                  aria-controls="collapseFive1"
+                  style="cursor: pointer"
+                >
+                  <button
+                    class="btn btn-link"
+                    data-toggle="collapse"
+                    data-target="#collapseFive1"
+                    aria-expanded="true"
+                    aria-controls="collapseFive1"
+                    style="cursor: pointer"
+                  >
+                    Selected Manufacturing Details
+                    <span><i class="fas fa-angle-down"></i></span>
+                  </button>
+                </h5>
+              </div>
+
+              <!--  -->
+              <div style="background-color: #edf4fa">
+                <div class="row">
+                  <div class="col-sm">Include Step</div>
+                  <div class="col-sm">Include Test</div>
+                  <div class="col-sm">From Product</div>
+                  <div class="col-sm">Mfg. Step</div>
+                  <div class="col-sm">Mfg. Site</div>
+                  <div class="col-sm">Component</div>
+                </div>
+              </div>
+              <!--  -->
+
+              <!-- for data -->
+              <div id="selc-man-fac-details-data" class="scroll">
+                <!--  -->
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- E changes end -->
+    </div>
+    <div
+      class="tab-pane fade"
+      id="docs"
+      role="tabpanel"
+      aria-labelledby="documents"
+    >
+      <!--  changes here for F -->
+
+      <div class="tab-content" id="myTabContent6">
+        <div class="card container mt-2">
+          <div id="accordion3">
+            <div class="card mb-2">
+              <div class="card-header" id="headingSix" style="height: 50px">
+                <h5
+                  class="mb-0"
+                  data-toggle="collapse"
+                  data-target="#collapseSix"
+                  aria-expanded="true"
+                  aria-controls="collapseSix"
+                  style="cursor: pointer"
+                >
+                  <button
+                    class="btn btn-link"
+                    data-toggle="collapse"
+                    data-target="#collapseSix"
+                    aria-expanded="true"
+                    aria-controls="collapseSix"
+                    style="cursor: pointer"
+                  >
+                    Select a Product to Review Document
+                    <span><i class="fas fa-angle-down"></i></span>
+                  </button>
+                </h5>
+              </div>
+
+              <!--  -->
+              <div class="card-body" style="padding: 0rem">
+                <div class="row d-flex justify-content-center mt-100 m-3">
+                  <div class="col-md-6">
+                    <select
+                    class="docs-cls"
+                      id="docs-id"
+                      placeholder="Select Products"
+                      
+                    >
+                    {% for i in obj %}
+                    <option value="{{i.preffered_product_name}}">
+                      {{i.preffered_product_name}}
+                    </option>
+                    {% endfor %}
+
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <!--  -->
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- for selected docs details -->
+
+      <div class="tab-content" id="myTabContent61">
+        <div class="card container mt-2">
+          <div id="accordion3">
+            <div class="card mb-2">
+              <div class="card-header" id="headingSix1" style="height: 50px">
+                <h5
+                  class="mb-0"
+                  data-toggle="collapse"
+                  data-target="#collapseSix1"
+                  aria-expanded="true"
+                  aria-controls="collapseSix1"
+                  style="cursor: pointer"
+                >
+                  <button
+                    class="btn btn-link"
+                    data-toggle="collapse"
+                    data-target="#collapseSix1"
+                    aria-expanded="true"
+                    aria-controls="collapseSix1"
+                    style="cursor: pointer"
+                  >
+                    Selected Documents
+                    <span><i class="fas fa-angle-down"></i></span>
+                  </button>
+                </h5>
+              </div>
+
+              <!--  -->
+              <div style="background-color: #edf4fa">
+                <div class="row">
+                  <div class="col-sm">Document Type</div>
+                  <div class="col-sm">Reference Number</div>
+                  <div class="col-sm">Version</div>
+                  <div class="col-sm">Title</div>
+                  <div class="col-sm">Document Class</div>
+                  <div class="col-sm">Issue Date</div>
+                </div>
+              </div>
+              <!--  -->
+
+              <!-- for data -->
+              <div id="docs-details-data" class="scroll">
+                <!--  -->
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <!-- changes end for F -->
+    </div>
+    <div
+      class="tab-pane fade"
+      id="regs"
+      role="tabpanel"
+      aria-labelledby="reg-basic-info"
+    >
+      <!-- changes for G -->
+
+      <div class="card container mt-2">
+        <div class="card-body" style="padding: 0rem">
+          
+
+          <div class="text-right mb-2 mt-2" style="background-color: gray">
+            <button
+              type="submit"
+              class="btn m-1"
+              type="submit"
+              id="registration-savebtn"
+            >
+              Save
+            </button>
+          </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-5">
+          <div id="accordion1">
+            <div class="card">
+              <div class="card-header" id="headingSeven1" style="height: 50px">
+                <h5
+                  class="mb-0"
+                  data-toggle="collapse"
+                  data-target="#headingSeven1"
+                  aria-expanded="true"
+                  aria-controls="headingSeven1"
+                  style="cursor: pointer"
+                >
+                  <button
+                    class="btn btn-link"
+                    data-toggle="collapse"
+                    data-target="#collapseSeven1"
+                    aria-expanded="true"
+                    aria-controls="collapseSeven1"
+                    style="cursor: pointer"
+                  >
+                    Products
+                    <span><i class="fas fa-angle-down"></i></span>
+                  </button>
+                </h5>
+              </div>
+
+              <div
+                id="collapseSeven1"
+                class="collapse show"
+                aria-labelledby="headingSeven1"
+                data-parent="#accordion1"
+              >
+                <div class="card-body" style="height: 1180px; padding: 0rem">
+                  <div
+                    class="container card-body rounded"
+                    id="key-dates"
+                    style="margin-top: 0px; padding: 0rem"
+                  >
+                    <!-- Here dropdown -->
+
+                    <div class="card-body" style="padding: 0rem">
+                        <div class="row d-flex justify-content-center mt-100 m-3">
+                          <div class="col-md-6">
+                            <select
+                            class="basix-cls"
+                              id="basic-id"
+                              placeholder="Select Products"
+                              multiple
+                            >
+                            {% for i in obj %}
+                            <option value="{{i.preffered_product_name}}">
+                              {{i.preffered_product_name}}
+                            </option>
+                            {% endfor %}
+        
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+
+                    <!-- dropdown end -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 2nd half -->
+        <div class="form-group col-md-7">
+            <!-- 1st part start -->
+          <div id="accordionhalfOne">
+            <div class="card">
+              <div
+                class="card-header"
+                id="headingHalfOne"
+                style="height: 50px"
+              >
+                <h5
+                  class="mb-0"
+                  data-toggle="collapse"
+                  data-target="#collapseHalfOne"
+                  aria-expanded="true"
+                  aria-controls="collapseHalfOne"
+                  style="cursor: pointer"
+                >
+                  <button
+                    class="btn btn-link"
+                    data-toggle="collapse"
+                    data-target="#collapseHalfOne"
+                    aria-expanded="true"
+                    aria-controls="collapseHalfOne"
+                    style="cursor: pointer"
+                  >
+                    Product Basic Information
+                    <span><i class="fas fa-angle-down"></i></span>
+                  </button>
+                </h5>
+              </div>
+
+              <div
+                id="collapseHalfOne"
+                class="collapse show"
+                aria-labelledby="headingTwo"
+                data-parent="#accordionhalfOne"
+              >
+                <div class="card-body" style="height: 340px; padding: 0rem">
+
+                  <div
+                    class="container card-body rounded"
+                    id="key-dates"
+                    style="margin-top: 0px; padding: 0rem"
+                  >
+                    <!-- Here content -->
+
+                    <div class="form-group row">
+                        <label for="reg-set-no" class="col-sm-4 col-form-label">Reg. Set Number</label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" id="reg-set-no" >
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label for="local-trade-name" class="col-sm-4 col-form-label">Local Trade Name</label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" id="local-trade-name" >
+                        </div>
+                      </div>
+                    
+                      <div class="form-group row">
+                        <label for="leg-prod-cat" class="col-sm-4 col-form-label">Legal Product Category</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" id="leg-prod-cat">
+                                <option value="select">OTC</option>
+                                <option value="Prescription Medicines">Prescription Medicines</option>
+                                <option value="Complementary Medicines">Complementary Medicines</option>
+                                <option value="General SalesList">General SalesList</option>
+                                <option value="Controlled Drugs">Controlled Drugs</option>
+                              </select>
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label for="dispen-cls" class="col-sm-4 col-form-label">Dispensing Class</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" id="dispen-cls">
+                                <option value="Select">Select</option>
+                                <option value="Admin">Admin</option>
+                                <option value="SuperAdmin">SuperAdmin</option>
+                                <option value="External Admin">External Admin</option>
+                                <option value="Others">Others</option>
+                              </select>
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label for="strategic-priority" class="col-sm-4 col-form-label">Strategic Priority</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" id="strategic-priority">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                              </select>
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label for="prescription-statement" class="col-sm-4 col-form-label">Prescription Statement</label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" id="prescription-statement" >
+                        </div>
+                      </div>
+
+
+                    <!-- content end -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 1st part end -->
+
+          <!-- 2nd part -->
+          <div class="form-group">
+            <div id="accordionhalfTwo">
+              <div class="card">
+                <div
+                  class="card-header"
+                  id="headingHalfTwo"
+                  style="height: 50px"
+                >
+                  <h5
+                    class="mb-0"
+                    data-toggle="collapse"
+                    data-target="#collapseHalfTwo"
+                    aria-expanded="true"
+                    aria-controls="collapseHalfTwo"
+                    style="cursor: pointer"
+                  >
+                    <button
+                      class="btn btn-link"
+                      data-toggle="collapse"
+                      data-target="#collapseHalfTwo"
+                      aria-expanded="true"
+                      aria-controls="collapseHalfTwo"
+                      style="cursor: pointer"
+                    >
+                      Persons
+                      <span><i class="fas fa-angle-down"></i></span>
+                    </button>
+                  </h5>
+                </div>
+  
+                <div
+                  id="collapseHalfTwo"
+                  class="collapse show"
+                  aria-labelledby="headingTwo"
+                  data-parent="#accordionhalfTwo"
+                >
+                  <div class="card-body" style="height: 200px; padding: 0rem">
+  
+                    <div
+                      class="container card-body rounded"
+                      id="key-dates"
+                      style="margin-top: 0px; padding: 0rem"
+                    >
+                      <!-- Here content -->
+
+                      <div style="background-color: #c1c9cc5c">
+                        <a
+                          href=""
+                          style="color: #30557c"
+                          data-toggle="modal"
+                          data-target="#exampleModalScrollablePerson"
+                          id="addPerson"
+                          ><i class="fa fa-plus" aria-hidden="true"></i>
+                          Add</a
+                        >
+                        |
+                        <a href="" style="color: #30557c" id="delete-date"
+                          ><i class="fa fa-trash" aria-hidden="true"></i>
+                          Delete</a
+                        >
+                      </div>
+
+                      <div style="background-color: #edf4fa">
+                        <div class="row">
+                          <div class="col-sm-1">
+                            <input type="checkbox" value="" id="chk-box" />
+                          </div>
+                          <div class="col-sm">Person</div>
+                          <div class="col-sm">role</div>
+                          <div class="col-sm">Comments</div>
+                        </div>
+                      </div>
+
+                      <!-- for data -->
+                      <div id="new-data-person" class="scroll">
+                        <!--  -->
+                      </div>
+
+                      <!-- 2nd content -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2nd part end -->
+
+          <!-- 3rd part -->
+
+          <div class="form-group">
+            <div id="accordionhalfThree">
+              <div class="card">
+                <div
+                  class="card-header"
+                  id="headingHalfThree"
+                  style="height: 50px"
+                >
+                  <h5
+                    class="mb-0"
+                    data-toggle="collapse"
+                    data-target="#collapseHalfThree"
+                    aria-expanded="true"
+                    aria-controls="collapseHalfThree"
+                    style="cursor: pointer"
+                  >
+                    <button
+                      class="btn btn-link"
+                      data-toggle="collapse"
+                      data-target="#collapseHalfThree"
+                      aria-expanded="true"
+                      aria-controls="collapseHalfThree"
+                      style="cursor: pointer"
+                    >
+                      Registration Basic Information
+                      <span><i class="fas fa-angle-down"></i></span>
+                    </button>
+                  </h5>
+                </div>
+  
+                <div
+                  id="collapseHalfTwo"
+                  class="collapse show"
+                  aria-labelledby="headingThree"
+                  data-parent="#accordionhalfThree"
+                >
+                  <div class="card-body" style="height: 290px; padding: 0rem">
+  
+                    <div
+                      class="container card-body rounded"
+                      id="key-dates"
+                      style="margin-top: 0px; padding: 0rem"
+                    >
+                      <!-- Here content -->
+                      <div class="form-group row">
+                        <label for="date" class="col-sm-4 col-form-label">Created On</label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" id="date" style="
+                          width: 100%;
+                          height: 100%;
+                          border: 1px solid #ced4da;
+                          border-radius: 0.25rem;
+                        ">
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label for="app-stg" class="col-sm-4 col-form-label">Application Stage</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" id="app-stg">
+                                <option value="select">-select-</option>
+                                <option value="1st Stage">1st Stage(New)</option>
+                                <option value="2nd Stage">2nd Stage(Mid)</option>
+                                <option value="3rd Stage">3rd Stage(Recycle)</option>
+                                <option value="4th Stage">4th Stage(Final)</option>       
+                              </select>
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label for="reg-holder" class="col-sm-4 col-form-label">Registration Holder</label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" id="reg-holder" >
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label for="resp-reg-dept" class="col-sm-4 col-form-label">Resp. Reg. Dept.</label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" id="resp-reg-dept" >
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label for="comments" class="col-sm-4 col-form-label">Comments</label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" id="comments" >
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3rd part end -->
+
+          <!-- 4th part -->
+
+          <div class="form-group">
+            <div id="accordionhalfFour">
+              <div class="card">
+                <div
+                  class="card-header"
+                  id="headingHalfFour"
+                  style="height: 50px"
+                >
+                  <h5
+                    class="mb-0"
+                    data-toggle="collapse"
+                    data-target="#collapseHalfFour"
+                    aria-expanded="true"
+                    aria-controls="collapseHalfFour"
+                    style="cursor: pointer"
+                  >
+                    <button
+                      class="btn btn-link"
+                      data-toggle="collapse"
+                      data-target="#collapseHalfFour"
+                      aria-expanded="true"
+                      aria-controls="collapseHalfFour"
+                      style="cursor: pointer"
+                    >
+                      Status
+                      <span><i class="fas fa-angle-down"></i></span>
+                    </button>
+                  </h5>
+                </div>
+  
+                <div
+                  id="collapseHalfTwo"
+                  class="collapse show"
+                  aria-labelledby="headingFour"
+                  data-parent="#accordionhalfFour"
+                >
+                  <div class="card-body" style="height: 180px; padding: 0rem">
+  
+                    <div
+                      class="container card-body rounded"
+                      id="key-dates"
+                      style="margin-top: 0px; padding: 0rem"
+                    >
+                      <!-- Here content -->
+
+                      <div style="background-color: #c1c9cc5c">
+                        <a
+                          href=""
+                          style="color: #30557c"
+                          data-toggle="modal"
+                          data-target="#exampleModalScrollableStatus"
+                          id="status"
+                          ><i class="fa fa-plus" aria-hidden="true"></i>
+                          Add</a
+                        >
+                        |
+                        <a href="" style="color: #30557c" id="delete-sts"
+                          ><i class="fa fa-trash" aria-hidden="true"></i>
+                          Delete</a
+                        >
+                      </div>
+
+                      <div style="background-color: #edf4fa">
+                        <div class="row">
+                          <div class="col-sm-1">
+                            <input type="checkbox" value="" id="chk-box" />
+                          </div>
+                          <div class="col-sm">Status Group</div>
+                          <div class="col-sm">Status</div>
+                          <div class="col-sm">Status Date</div>
+                          <div class="col-sm">Remarks</div>
+                        </div>
+                      </div>
+
+                      <!-- for data -->
+
+                      <div id="new-data-status" class="scroll">
+                        <!--  -->
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4th part end -->
+        </div>
+      </div>
+
+      </div>
+  </div>
+      <!-- changes of G end -->
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div>
+    <div
+        class="modal fade"
+        id="exampleModalScrollablePerson"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalScrollableTitlePerson"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalScrollableTitlePerson">
+               Person
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <!-- <form> -->
+              <div class="form-group row">
+                <label for="prmy" class="col-sm-4 col-form-label">Person</label>
+                <div class="col-sm-6">
+                  <select class="form-control" id="person">
+                    <option value="select">select</option>
+                    <option value="Siddhant">Siddhant</option>
+                    <option value="Sankar">Sankar</option>
+                    <option value="Tjeerd">Tjeerd</option>
+                    <option value="Alex">Alex</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="role" class="col-sm-4 col-form-label">Role</label>
+                <div class="col-sm-6">
+                  <select class="form-control" id="role">
+                    <option value="Experimental and Clinical Pharmacology (ECP)">Experimental and Clinical Pharmacology (ECP)</option>
+                    <option value="Quality Assurance">Quality Assurance</option>
+                    <option value="Medicinal Chemistry">Medicinal Chemistry</option>
+                    <option value="Laboratory Practice">Laboratory Practice</option>
+                    <option value="Quality Control">Quality Control</option>
+
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="person-comments" class="col-sm-4 col-form-label"
+                  >Comments</label
+                >
+                <div class="col-sm-6">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="person-comments"
+                    placeholder=""
+                  />
+                </div>
+              </div>
+              <!-- </form> -->
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                id="save-responsible-person-btn"
+                class="btn btn-primary"
+                data-dismiss="modal"
+              >
+                Save changes
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <!-- Status Modal -->
+
+  <div
+        class="modal fade"
+        id="exampleModalScrollableStatus"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalScrollableTitleStatus"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalScrollableTitleStatus">
+               Status
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <!-- <form> -->
+              <div class="form-group row">
+                <label for="prmy" class="col-sm-4 col-form-label">Status Group</label>
+                <div class="col-sm-6">
+                  <select class="form-control" id="status-group">
+                    <option value="Select">Select</option>
+                    <option value="Application">Application</option>
+                    <option value="Clinical trail">Clinical trail</option>
+                    <option value="Approval">Approval</option>
+                    <option value="marketing">Marketing</option>
+                    <option value="Registration">Registration</option>
+                    <option value="Clinical trail ">Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="role" class="col-sm-4 col-form-label">Status</label>
+                <div class="col-sm-6">
+                  <select class="form-control" id="statuss">
+                    <option value="Select">Select</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Submitted">Submitted</option>
+                    <option value="Re-Submitted">Re-Submitted</option>
+                    <option value="Rejected">Rejected</option>
+                    <option value="Suspended">Suspended</option>
+                    <option value="Launched">Launched</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="comments" class="col-sm-4 col-form-label"
+                  >Status Date</label
+                >
+                <div class="col-sm-6">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="status-date"
+                    placeholder=""
+                  />
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="remark" class="col-sm-4 col-form-label"
+                  >Remarks</label
+                >
+                <div class="col-sm-6">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="remark"
+                    placeholder=""
+                  />
+                </div>
+              </div>
+              <!-- </form> -->
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                id="save-status-btn"
+                class="btn btn-primary"
+                data-dismiss="modal"
+              >
+                Save changes
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+{% endblock %} {%block css%}
+<style>
+  .bs-example {
+    margin: 20px;
+  }
+</style>
+{% endblock %} {% block script%}
+<script>
+    var today = new Date();
+
+    var dateKey =
+  today.getMonth() + 1 + "/" + today.getDate() + "/" + today.getFullYear();
+
+    var products = ""
+    // var selectd_procedure_checks = ""
+    var selectd_countries = ""
+    var selectd_companies = ""
+    var ResponsibleObj = { person: [], role: [], comments: [] };
+    var StatusObj = { StatusGroup: [], status: [], statusDate: [], Remark: [] };
+    var review_manfac_details = { includeStep: [], includeTest: [], fromProduct: [], mfgStep: [], fgSite:[], component: [] };
+    var review_document = { docType: [], referenceNumber: [], verion: [], title: [], documentClass:[], issueDate: [] };
+
+    $("#date").datepicker();
+  $("#date").val(dateKey);
+
+  $("#status-date").datepicker();
+  $("#status-date").val(dateKey);
+  
+  $(document).ready(function () {
+    var multipleCancelButton = new Choices("#choices-multiple-remove-button", {
+      removeItemButton: true,
+      maxItemCount: 15,
+      searchResultLimit: 15,
+      renderChoiceLimit: 15,
+    });
+
+    var multipleCancelButton = new Choices("#select-countries", {
+      removeItemButton: true,
+      maxItemCount: 15,
+      searchResultLimit: 15,
+      renderChoiceLimit: 15,
+    });
+
+    var multipleCancelButton = new Choices("#select-companies", {
+      removeItemButton: true,
+      maxItemCount: 15,
+      searchResultLimit: 15,
+      renderChoiceLimit: 15,
+    });
+
+    var multipleCancelButton = new Choices("#man-prod-details", {
+      removeItemButton: true,
+      maxItemCount: 15,
+      searchResultLimit: 15,
+      renderChoiceLimit: 15,
+    });
+    var multipleCancelButton = new Choices("#docs-id", {
+      removeItemButton: true,
+      maxItemCount: 15,
+      searchResultLimit: 15,
+      renderChoiceLimit: 15,
+    });
+    var multipleCancelButton = new Choices("#basic-id", {
+      removeItemButton: true,
+      maxItemCount: 15,
+      searchResultLimit: 15,
+      renderChoiceLimit: 15,
+    });
+
+    $("select.man-prod").change(function(e){
+        let selcted_prod = $(this).children("option:selected").val()
+
+        $.ajax({
+            url: "{% url 'get_manfac_details' %}",
+          type: "GET",
+          data: {
+            productName: selcted_prod,
+          },
+          success: function(res){
+            $("#selc-man-fac-details-data").append(`<div class="row">
+                      <div class="col-sm-2">
+                        <input type="checkbox" value="kk" id="inc-step-chk-box" />
+                      </div>
+                      <div class="col-sm-2">
+                        <input type="checkbox" value="kk" id="inc-test-chk-box" />
+                      </div>
+                      <div class="col-sm">${selcted_prod}</div>
+                      <div class="col-sm">${res.obj.manufacturing_step}</div>
+                      <div class="col-sm">${res.obj.manufacturing_site_state}, ${res.obj.manufacturing_site_city}</div>
+                      <div class="col-sm">Tests</div>
+                    </div>`)
+
+                    // to save data
+
+          review_manfac_details['fromProduct'].push(selcted_prod)
+          review_manfac_details['mfgStep'].push(res.obj.manufacturing_step)
+          review_manfac_details['fgSite'].push(res.obj.manufacturing_site_state)
+          review_manfac_details['component'].push("Test")
+          },
+          error: function(err){
+            alert("Error")
+          }
+        })
+        
+    });
+
+
+    $("select.docs-cls").change(function(e){
+        let selcted_prod = $(this).children("option:selected").val()
+
+        $("#docs-details-data").append(`<div class="row">
+                     <div class="col-sm-2">
+                       <input type="checkbox" value="kk" id="inc-step-chk-box" /> DOC type 1
+                     </div>
+                     <div class="col-sm-2">
+                       <p>111</p>
+                     </div>
+                     <div class="col-sm"></div>
+                     <div class="col-sm"></div>
+                     <div class="col-sm">clinical</div>
+                     <div class="col-sm">Tests</div>
+                   </div>`)
+
+                   review_document['referenceNumber'].push("111")
+                   review_document['documentClass'].push("Clinical")
+                   review_document['issueDate'].push("Test")
+
+        // $.ajax({
+        //     url: "{% url 'get_manfac_details' %}",
+        //   type: "GET",
+        //   data: {
+        //     productName: selcted_prod,
+        //   },
+        //   success: function(res){
+        //     $("#selc-man-fac-details-data").append(`<div class="row">
+        //               <div class="col-sm-2">
+        //                 <input type="checkbox" value="kk" id="inc-step-chk-box" />
+        //               </div>
+        //               <div class="col-sm-2">
+        //                 <input type="checkbox" value="kk" id="inc-test-chk-box" />
+        //               </div>
+        //               <div class="col-sm">${selcted_prod}</div>
+        //               <div class="col-sm">${res.obj.manufacturing_step}</div>
+        //               <div class="col-sm">${res.obj.manufacturing_site_state}, ${res.obj.manufacturing_site_city}</div>
+        //               <div class="col-sm">Tests</div>
+        //             </div>`)
+        //   },
+        //   error: function(err){
+        //     alert("Error")
+        //   }
+        // })
+        
+    });
+
+    $("#save-responsible-person-btn").click(function (e) {
+      e.preventDefault();
+
+      var person = $("#person").val();
+      var role = $("#role").val();
+      var comments = $("#person-comments").val();
+
+      if (ResponsibleObj.person.length === 0) {
+        ResponsibleObj.person.push(person);
+        ResponsibleObj.role.push(role);
+        ResponsibleObj.comments.push(comments);
+      } else {
+        ResponsibleObj.person.push(person);
+        ResponsibleObj.role.push(role);
+        ResponsibleObj.comments.push(comments);
+      }
+
+      $(
+        "#new-data-person"
+      ).append(`<div class="row" value="${person}">
+                      <div class="col-sm-1">
+                        <input type="checkbox" value="${person}" id="chk-box" />
+                      </div>
+                      <div class="col-sm">${person}</div>
+                      <div class="col-sm">${role}</div>
+                      <div class="col-sm">${comments}</div>
+                    </div>`);
+    });
+
+
+    $("#save-status-btn").click(function (e) {
+      e.preventDefault();
+
+      var StatusGroup = $("#status-group").val();
+      var status = $("#statuss").val();
+      var statusDate = $("#status-date").val();
+      var remark = $("#remark").val();
+
+      if (StatusObj.StatusGroup.length === 0) {
+        StatusObj.StatusGroup.push(StatusGroup);
+        StatusObj.status.push(status);
+        StatusObj.statusDate.push(statusDate);
+        StatusObj.Remark.push(remark);
+      } else {
+        StatusObj.StatusGroup.push(StatusGroup);
+        StatusObj.status.push(status);
+        StatusObj.statusDate.push(statusDate);
+        StatusObj.Remark.push(remark);
+      }
+
+      $("#new-data-status").append(`<div class="row" value="${StatusGroup}">
+                      <div class="col-sm-1">
+                        <input type="checkbox"/>
+                      </div>
+                      <div class="col-sm">${StatusGroup}</div>
+                      <div class="col-sm">${status}</div>
+                      <div class="col-sm">${statusDate}</div>
+                      <div class="col-sm">${remark}</div>
+                    </div>`);
+     });
+
+    //  this method is for fetch products
+     $("#choices-multiple-remove-button").change(function(e){
+      products = $(this).val()
+     })
+
+    //  this method is used to show details
+     $("#producy-contact-tab").click(function(e){
+      e.preventDefault()
+
+      if(products == ""){
+        alert("select product First")
+        return false;
+      }else{
+
+        $.ajax({
+            url: "{% url 'fetch_products_details_to_product_contents_page' %}",
+          type: "GET",
+          data: {
+            productName: products.toString(),
+          },
+          success: function(res){
+
+            for(i =0; i < res.obj.length; i++){
+              $("#product-content-id").append(`
+                <div class="col">
+                <p><b>Product</b> : ${res.obj[i]['from_product']}</p>
+                <p><b>Version No</b> : ${res.obj[i]['version_no']}</p>
+                <p><b>Packaging Code</b> : ${res.obj[i]['packaging_code']}</p>
+                <p><b>Packaging Type</b> : ${res.obj[i]['packaging_type']}</p>
+                <p><b>Packaging Material</b> : ${res.obj[i]['packaging_material']}</p>
+                <p><b>Basic Packaging code</b> : ${res.obj[i]['basic_packaging_code']}</p>
+                <p><b>Closure</b> : ${res.obj[i]['closure']}</p>
+                <p><b>Packaging Size</b> : ${res.obj[i]['packaging_size_txt']}</p>
+              </div>`
+              )
+            }
+           
+          },
+          error: function(err){
+            alert("Error")
+          }
+        })
+
+      }
+      
+     });
+
+    //  select Countries list
+
+    $("#select-countries").change(function(e){
+      selectd_countries = $(this).val();
+     })
+
+    //  selectd Companies
+
+    $("#select-companies").change(function(e){
+      selectd_companies = $(this).val();
+     })
+
+
+    //  save
+
+    $("#registration-savebtn").click(function(e){
+      e.preventDefault()
+
+      var selectd_procedure_checks = [];
+
+      $('input[type=checkbox]:checked').each(function() {
+        selectd_procedure_checks.push($(this).val());
+      });
+
+      console.log("====",selectd_procedure_checks);
+
+
+      // var selectd_procedure_checks = []
+
+      //   var checkboxes = $('input[type=checkbox]:checked')
+        
+      //   console.log("=========",checkboxes);
+
+      //   for (var i = 0; i < checkboxes.length; i++) {
+      //     selectd_procedure_checks.push(checkboxes[i].value)
+      //   }
+
+      // console.log(selectd_procedure_checks);
+
+      $.ajax({
+
+        url: "{% url 'save_registration_details' %}",
+          type: "GET",
+          data: {
+            productName: products.toString(),
+            selectProcedureType: selectd_procedure_checks.toString(),
+            selectCountries: selectd_countries.toString(),
+            selectCompanies: selectd_companies.toString(),
+            fromProduct: review_manfac_details['fromProduct'].toString(),
+            mfgStep: review_manfac_details['mfgStep'].toString(),
+            mfgSite: review_manfac_details['fgSite'].toString(),
+            component: review_manfac_details['component'].toString(),
+            referenceNumber: review_document['referenceNumber'].toString(),
+            version: review_document['verion'].toString(),
+            title: review_document['title'].toString(),
+            documentClass: review_document['documentClass'].toString(),
+            issueDate: review_document['issueDate'].toString(),
+            regSetNumber: $("#reg-set-no").val(),
+            localTradeNo: $("#local-trade-name").val(),
+            legalProductCategory: $("#leg-prod-cat").val(),
+            dispensingClass: $("#dispen-cls").val(),
+            strategicPriority: $("#strategic-priority").val(),
+            prescriptionStatement: $("#prescription-statement").val(),
+            person: ResponsibleObj['person'].toString(),
+            role:  ResponsibleObj['role'].toString(),
+            comments: ResponsibleObj['comments'].toString(),
+            createdOn: $("#date").val(),
+            applicationStage: $("#app-stg").val(),
+            registrationHolder: $("#reg-holder").val(),
+            respRegDept: $("#resp-reg-dept").val(),
+            basicInfocomments: $("#comments").val(),
+            statusGroup: StatusObj['StatusGroup'].toString(),
+            status: StatusObj['status'].toString(),
+            statusDate: StatusObj['statusDate'].toString(),
+            remarks: StatusObj['Remark'].toString()
+
+          },
+          success: function(res){
+            alert("Saved Successfully")
+          },
+          error: function(err){
+            alert("Error")
+          }
+
+      })
+    });
+    
+
+
+  });
+</script>
+{% endblock %}

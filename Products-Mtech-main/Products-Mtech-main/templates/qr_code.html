@@ -1,0 +1,166 @@
+{% extends 'base.html' %} {% block title %}QR Code{% endblock %} 
+{%block content%}
+
+<div class="card container mt-2">
+  <div class="card-body" style="padding: 0rem">
+    <!-- left half -->
+
+    <div class="form-row">
+      <div class="form-group col-md-7">
+        <div id="accordion1">
+          <div class="card">
+            <div class="card-header" id="headingSeven1" style="height: 50px">
+              <h5
+                class="mb-0"
+                data-toggle="collapse"
+                data-target="#headingSeven1"
+                aria-expanded="true"
+                aria-controls="headingSeven1"
+                style="cursor: pointer"
+              >
+                <button
+                  class="btn btn-link"
+                  data-toggle="collapse"
+                  data-target="#collapseSeven1"
+                  aria-expanded="true"
+                  aria-controls="collapseSeven1"
+                  style="cursor: pointer"
+                >
+                  Products
+                  <span><i class="fas fa-angle-down"></i></span>
+                </button>
+              </h5>
+            </div>
+
+            <div
+              id="collapseSeven1"
+              class="collapse show"
+              aria-labelledby="headingSeven1"
+              data-parent="#accordion1"
+            >
+              <div class="card-body" style="height: 325px; padding: 0rem">
+                <div
+                  class="container card-body rounded"
+                  id="key-dates"
+                  style="margin-top: 0px; padding: 0rem"
+                >
+                  <!-- Here dropdown -->
+
+                  <div class="card-body" style="padding: 0rem">
+                    <div class="row d-flex justify-content-center mt-100 m-3">
+                      <div class="col-md-7">
+                        <form action="/send/" method="post">
+                          {% csrf_token %}
+
+                          <select
+                            class="basix-cls"
+                            id="basic-id"
+                            placeholder="Select Products"
+                            name="data"
+                          >
+                            {% for i in obj %}
+                            <option value="{{i.preffered_product_name}}">
+                              {{i.preffered_product_name}}
+                            </option>
+                            {% endfor %}
+                          </select>
+
+                          <div class="col-md-2">
+                            <input type="submit" value="Generate" class="btn button-primary" style="margin-left: 100px;"/>
+                          </div>
+
+                        </form>
+                      </div>
+
+                     
+                    </div>
+                  </div>
+
+                  <!-- dropdown end -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- right half -->
+
+      <div class="form-group col-md-5">
+        <!-- 1st part start -->
+        <div id="accordionhalfOne">
+          <div class="card">
+            <div class="card-header" id="headingHalfOne" style="height: 50px">
+              <h5
+                class="mb-0"
+                data-toggle="collapse"
+                data-target="#collapseHalfOne"
+                aria-expanded="true"
+                aria-controls="collapseHalfOne"
+                style="cursor: pointer"
+              >
+                <button
+                  class="btn btn-link"
+                  data-toggle="collapse"
+                  data-target="#collapseHalfOne"
+                  aria-expanded="true"
+                  aria-controls="collapseHalfOne"
+                  style="cursor: pointer"
+                >
+                  Product QR Code
+                  <span><i class="fas fa-angle-down"></i></span>
+                </button>
+              </h5>
+            </div>
+
+            <div
+              id="collapseHalfOne"
+              class="collapse show"
+              aria-labelledby="headingTwo"
+              data-parent="#accordionhalfOne"
+            >
+              <div class="card-body" style="height: 340px; padding: 0rem">
+                <div
+                  class="container card-body rounded"
+                  id="key-dates"
+                  style="margin-top: 0px; padding: 0rem"
+                >
+                  <!-- Here content -->
+                  {% load static %} {% if data %}
+                  <h4>Your QR Code is:</h4>
+                  <img src="{% static 'linercost/qr/test.png' %}" />
+                  {% endif %}
+
+                  <!-- content end -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %} {%block css%}
+<style>
+  img {
+    vertical-align: middle;
+    border-style: none;
+    margin-left: 90px;
+    margin-top: -10px;
+    height: 300px;
+  }
+</style>
+{% endblock %} {% block script%}
+<script>
+  $(document).ready(function () {
+    var multipleCancelButton = new Choices("#basic-id", {
+      removeItemButton: true,
+      maxItemCount: 15,
+      searchResultLimit: 15,
+      renderChoiceLimit: 15,
+    });
+  });
+</script>
+{% endblock %}

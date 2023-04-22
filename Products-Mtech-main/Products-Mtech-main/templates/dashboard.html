@@ -1,0 +1,106 @@
+{% extends 'base.html'%}
+
+{% block title %}Dashboard{% endblock %} 
+
+{% block content %}
+
+<div class="container m-5">
+
+  <div class="row">
+    <div class="col">
+      <h5>National Bar graph</h5>
+  <canvas id="myChart" style="width:50%;max-width:500px"></canvas>
+    </div>
+    <div class="col ml-5">
+      <h5>Inter National Bar graph</h5>
+      <canvas id="myChart2" style="width:50%;max-width:500px"></canvas>
+    </div>
+
+  <div>  
+  </div>
+
+  {% endblock %} 
+
+  {% block script%}
+  <script>
+
+var xValues = ["Approved", "Pending", "Rejected"];
+
+var yValues1 = [0, 0, 0];
+var yValues2 = [0, 0, 0];
+
+var barColors = [
+  "#b91d47",
+  "#00aba9",
+  "#2b5797",
+  "#e8c3b9",
+  "#1e7145"
+];
+
+$.ajax({
+  url: "{% url 'graph'%}",
+        type: "GET",
+        success: function (res) {
+
+          for(i=0; i<res.national_obj.length; i++){
+
+            if(res.national_obj[i]['govt_approval'] == "Approved"){
+              yValues1[0] = res.national_obj[i]['dcount']
+              yValues2[0] = res.national_obj[i]['dcount']
+            }
+            else if(res.national_obj[i]['govt_approval'] == "Pending Approval"){
+              yValues1[1] = res.national_obj[i]['dcount']
+              yValues2[1] = res.national_obj[i]['dcount']
+            }
+            else if(res.national_obj[i]['govt_approval'] == "Reject"){
+              yValues1[2] = res.national_obj[i]['dcount']
+              yValues2[2] = res.national_obj[i]['dcount']
+            }
+
+          }
+
+          new Chart("myChart", {
+  type: "pie",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues1
+    }]
+  },
+  options: {
+    title: {
+      display: true,
+      text: "World Wide Wine Production 2018"
+    }
+  }
+});
+
+new Chart("myChart2", {
+  type: "pie",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues2
+    }]
+  },
+  options: {
+    title: {
+      display: true,
+      text: "World Wide Wine Production 2018"
+    }
+  }
+});
+
+        },
+        error: function(err){
+          alert("Error")
+        },
+})
+
+
+    
+  </script>
+  {% endblock %}
+
